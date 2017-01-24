@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^4.0.0",
-    "timbot2": "file:///Users/tmitim_air/workspace/timbot2",
+    "timbot2": "^0.1.1",
     "weather-js": "^1.0.2"
   },
   "devDependencies": {
