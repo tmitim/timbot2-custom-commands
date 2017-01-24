@@ -11,7 +11,8 @@ export class Weather extends BotListener {
   start(){
     var weatherCommand = this;
     weatherCommand.controller.hears('weather', weatherCommand.channels, function(bot,message) {
-      weather.find({search: 'Los Angeles, CA', degreeType: 'F'}, function(err, result) {
+      var location = process.env.WEATHER_LOCATION || 'Los Angeles, CA';
+      weather.find({search: location, degreeType: 'F'}, function(err, result) {
         if(err) {
           console.log(err);
         } else {

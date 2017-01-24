@@ -9,7 +9,7 @@ var BotListener_1 = require("timbot2/lib/BotListener");
 var Weather = (function (_super) {
     __extends(Weather, _super);
     function Weather() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super.apply(this, arguments) || this;
         _this.name = "weather";
         _this.desc = "Shows weather information";
         _this.hidden = false;
@@ -19,7 +19,8 @@ var Weather = (function (_super) {
     Weather.prototype.start = function () {
         var weatherCommand = this;
         weatherCommand.controller.hears('weather', weatherCommand.channels, function (bot, message) {
-            weather.find({ search: 'Los Angeles, CA', degreeType: 'F' }, function (err, result) {
+            var location = process.env.WEATHER_LOCATION || 'Los Angeles, CA';
+            weather.find({ search: location, degreeType: 'F' }, function (err, result) {
                 if (err) {
                     console.log(err);
                 }
