@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "tsc"
+    "compile": "tsc",
+    "start": "timbot2"
   },
   "author": "tmitim",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^4.0.0",
+    "node-blink1": "^0.2.2",
     "timbot2": "^0.1.1",
     "weather-js": "^1.0.2"
   },
