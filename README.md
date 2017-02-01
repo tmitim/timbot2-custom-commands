@@ -1,13 +1,12 @@
 # timbot2-custom-examples
 
-Here are some timbot2 custom modules I have running.
+Some timbot2 custom modules I have running.
 
 ## Custom Commands
-Here are my available commands -
 
 
 ```
- Blink1.ts            listen to chat and blink the blink(1) when there's a message
+ Blink1.ts            listen to chat and blink blink(1) when there's a message
  Pizza.ts             Yum, pizza
  Weather.ts           Shows weather information
  ```
