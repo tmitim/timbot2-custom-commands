@@ -6,6 +6,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var BotListener_1 = require("timbot2/lib/BotListener");
 var Blink = require('node-blink1');
+var dotenv = require("dotenv");
+dotenv.config();
 var Blink1 = (function (_super) {
     __extends(Blink1, _super);
     function Blink1() {
@@ -13,6 +15,7 @@ var Blink1 = (function (_super) {
         _this.name = "Blink1";
         _this.desc = "listen to chat and blink the blink(1) when there's a message";
         _this.hidden = false;
+        _this.active = process.env.BLINK1 == 1;
         _this.channels = ['ambient'];
         return _this;
     }

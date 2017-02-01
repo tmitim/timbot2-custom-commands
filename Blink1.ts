@@ -1,10 +1,14 @@
 import {BotListener} from "timbot2/lib/BotListener";
 var Blink = require('node-blink1');
 
+import dotenv = require('dotenv');
+dotenv.config();
+
 export class Blink1 extends BotListener {
   name = "Blink1";
   desc = "listen to chat and blink the blink(1) when there's a message";
   hidden = false;
+  active = process.env.BLINK1 == 1;
   channels = ['ambient'];
 
   start() {
