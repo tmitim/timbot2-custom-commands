@@ -31,19 +31,19 @@ var Weather = (function (_super) {
                 else {
                     var botMessage = "Feels like " + result[0].current.feelslike + result[0].location.degreetype + " here in " +
                         result[0].location.name + ". (" + result[0].forecast[0].high + "/" + result[0].forecast[0].low + ")";
-                    bot.reply(message, botMessage);
+                    this.reply(bot, message, botMessage);
                     console.log(new Date().toUTCString() + ": " + botMessage);
                     for (var day = 1; day < result[0].forecast.length; day++) {
                         if (result[0].forecast[day].precip >= 50) {
                             (day === 1) ?
-                                bot.reply(message, "Looks like it might rain today") :
-                                bot.reply(message, "Looks like it might rain on " + result[0].forecast[day].day);
+                                this.reply(bot, message, "Looks like it might rain today") :
+                                this.reply(bot, message, "Looks like it might rain on " + result[0].forecast[day].day);
                             break;
                         }
                     }
                 }
             });
-        });
+        }.bind(this));
     };
     return Weather;
 }(BotListener_1.BotListener));
