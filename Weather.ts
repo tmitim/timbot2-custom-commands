@@ -24,20 +24,19 @@ export class Weather extends BotListener {
           var botMessage = "Feels like " + result[0].current.feelslike + result[0].location.degreetype + " here in " +
             result[0].location.name + ". (" + result[0].forecast[0].high + "/" + result[0].forecast[0].low + ")";
 
-          this.reply(bot, message, botMessage);
-          console.log(new Date().toUTCString() + ": " + botMessage);
+          weatherCommand.reply(bot, message, botMessage);
 
           for (var day = 1; day < result[0].forecast.length; day++) {
             if (result[0].forecast[day].precip >= 50) {
               (day === 1) ?
-                this.reply(bot, message, "Looks like it might rain today") :
-                this.reply(bot, message, "Looks like it might rain on " + result[0].forecast[day].day);
+                weatherCommand.reply(bot, message, "Looks like it might rain today") :
+                weatherCommand.reply(bot, message, "Looks like it might rain on " + result[0].forecast[day].day);
 
               break;
             }
           }
         }
       });
-    }.bind(this))
+    });
   }
 }

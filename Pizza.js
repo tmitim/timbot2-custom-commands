@@ -17,7 +17,7 @@ var Pizza = (function (_super) {
     }
     Pizza.prototype.start = function () {
         this.controller.hears('pizza', this.channels, function (bot, message) {
-            this.reply(message, "pizza? I want pizza.");
+            this.reply(bot, message, "pizza? I want pizza.");
         }.bind(this));
     };
     return Pizza;
