@@ -11,7 +11,7 @@ var Propquiz = (function (_super) {
     function Propquiz() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.name = "propquiz";
-        _this.desc = "Propquiz server commands";
+        _this.desc = _this.getHelp();
         _this.hidden = false;
         _this.active = true;
         _this.channels = ['direct_message', 'direct_mention', 'mention'];
@@ -69,6 +69,16 @@ var Propquiz = (function (_super) {
             messages.push("```");
             prop.reply(bot, message, messages.join("\n"));
         });
+    };
+    Propquiz.prototype.getHelp = function () {
+        var messages = [];
+        var leftPad = "- ";
+        messages.push("propquiz commands");
+        messages.push(leftPad + "git pull propquiz         fetch and pull from git");
+        messages.push(leftPad + "npm install propquiz      install npm modules");
+        messages.push(leftPad + "build propquiz            webpack and typescript compile");
+        messages.push(leftPad + "restart propquiz          restart node");
+        return messages.join("\n");
     };
     return Propquiz;
 }(BotListener_1.BotListener));

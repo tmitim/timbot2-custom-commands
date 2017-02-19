@@ -3,7 +3,7 @@ import shell = require("shelljs");
 
 export class Propquiz extends BotListener {
   name = "propquiz";
-  desc = "Propquiz server commands";
+  desc = this.getHelp();
 
   hidden = false;
   active = true;
@@ -63,5 +63,18 @@ export class Propquiz extends BotListener {
       messages.push("```");
       prop.reply(bot, message, messages.join("\n"));
     });
+  }
+
+  getHelp() {
+    var messages = [];
+    var leftPad = "- ";
+
+    messages.push("propquiz commands");
+    messages.push(leftPad + "git pull propquiz         fetch and pull from git");
+    messages.push(leftPad + "npm install propquiz      install npm modules");
+    messages.push(leftPad + "build propquiz            webpack and typescript compile");
+    messages.push(leftPad + "restart propquiz          restart node");
+
+    return messages.join("\n");
   }
 }
