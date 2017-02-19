@@ -59,6 +59,16 @@ var Propquiz = (function (_super) {
                 prop.reply(bot, message, "``` " + cmd.stderr + " ```");
             }
         });
+        this.controller.hears('propquiz commands', this.channels, function (bot, message) {
+            var messages = [];
+            messages.push("```");
+            messages.push("git pull propquiz         fetch and pull from git");
+            messages.push("npm install propquiz      install npm modules");
+            messages.push("build propquiz            webpack and typescript compile");
+            messages.push("restart propquiz          restart node");
+            messages.push("```");
+            prop.reply(bot, message, messages.join("\n"));
+        });
     };
     return Propquiz;
 }(BotListener_1.BotListener));
