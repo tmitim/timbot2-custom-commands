@@ -6,8 +6,6 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var BotListener_1 = require("timbot2/lib/BotListener");
 var Blink = require('node-blink1');
-var dotenv = require("dotenv");
-dotenv.config();
 var Blink1 = (function (_super) {
     __extends(Blink1, _super);
     function Blink1() {
