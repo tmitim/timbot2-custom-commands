@@ -7,8 +7,13 @@ export class Pizza extends BotListener {
   channels = ['direct_message','direct_mention','mention','ambient'];
 
   start() {
-    this.controller.hears('pizza', this.channels, function(bot,message) {
-      this.reply(bot, message, "pizza? I want pizza.");
-    }.bind(this));
+
+    this.controller.hears('pizza', this.channels, (bot,message) => {
+      // reply
+      this.reply(bot, message, "pizza? I want pizza");
+      // reply as code
+      // this.replyCode(bot, message, "pizza I want pizza");
+    // to use reply
+    });
   }
 }
