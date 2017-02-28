@@ -12,44 +12,45 @@ export class Propquiz extends BotListener {
 
   start() {
     var prop = this;
-    var path = "/home/timothy/workspace/prop-quiz";
+    var repo_path = process.env.REPO_PATH || "/home/timothy/workspace/prop-quiz";
+    var server_path = process.env.SERVER_PATH || "/home/timothy/workspace/prop-quiz/server/index.js";
 
     this.controller.hears('git pull propquiz', this.channels, function(bot,message) {
       if (!shell.which('git')) {
-        prop.reply(bot, message, "``` Git not installed ```");
+        prop.replyCode(bot, message, "Git not installed");
       } else {
-        shell.pushd(path);
+        shell.pushd(repo_path);
         shell.exec('git fetch');
-        prop.reply(bot, message, "``` " + shell.exec('git pull').stdout + "```");
+        prop.replyCode(bot, message, shell.exec('git pull').stdout);
       }
     });
 
     this.controller.hears('npm install propquiz', this.channels, function(bot,message) {
-      shell.pushd(path);
+      shell.pushd(repo_path);
       var cmd = shell.exec('npm install');
       if (cmd.code === 0) {
-        prop.reply(bot, message, "``` Propquiz finished installing node_modules ```");
+        prop.replyCode(bot, message, "Propquiz finished installing node_modules");
       } else {
-        prop.reply(bot, message, "``` " + cmd.stderr + " ```");
+        prop.replyCode(bot, message, cmd.stderr);
       }
     });
 
     this.controller.hears('build propquiz', this.channels, function(bot,message) {
-      shell.pushd(path);
+      shell.pushd(repo_path);
       var cmd = shell.exec('npm run compile');
       if (cmd.code === 0) {
-        prop.reply(bot, message, "``` Propquiz finished building ```");
+        prop.replyCode(bot, message, "Propquiz finished building");
       } else {
-        prop.reply(bot, message, "``` " + cmd.stderr + " ```");
+        prop.replyCode(bot, message, cmd.stderr);
       }
     });
 
     this.controller.hears('restart propquiz', this.channels, function(bot,message) {
-      var cmd = shell.exec('forever restart /home/timothy/workspace/prop-quiz/server/index.js');
+      var cmd = shell.exec('forever restart ' + server_path);
       if (cmd.code === 0) {
-        prop.reply(bot, message, "``` Server restarted ```");
+        prop.replyCode(bot, message, "Server restarted");
       } else {
-        prop.reply(bot, message, "``` " + cmd.stderr + " ```");
+        prop.replyCode(bot, message, cmd.stderr);
       }
     });
   }
