@@ -10,7 +10,7 @@
   "author": "tmitim",
   "license": "MIT",
   "dependencies": {
-    "timbot2": "^0.2.0",
+    "timbot2": "^0.2.2",
     "weather-js": "^1.0.2"
   },
   "devDependencies": {
